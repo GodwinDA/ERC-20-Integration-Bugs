@@ -35,5 +35,8 @@ IERC20(tokenAddr).transfer(_owner, balance);
 ```
 Consider using `safeTransferFrom` in these cases.
 
-## 7. [L] Use safeTransfer for ERC20 transfers
+## 7. [M] `RewardsClaimer` Uses Transfer Functions that Do Not Check The Return Value
+https://solodit.cyfrin.io/issues/m-05-rewardsclaimer-uses-transfer-functions-that-do-not-check-the-return-value-shieldify-none-pear-v2-markdown
+
+The `RewardsClaimer.sol` contract here has a bug that can cause reward tokens to not be transferred successfully. This can happen because the contract does not check if the transfer was successful or not. This can affect the distribution and claiming of rewards. The bug is located in the `RewardsClaimer.sol` file and can be fixed by using the `safeTransfer()` and `safeTransferFrom()` functions from OpenZeppelin.
 
